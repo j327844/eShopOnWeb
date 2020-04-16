@@ -27,12 +27,12 @@ steps:
     msbuildArgs: '/t:Clean /p:DeployOnBuild=true /p:WebPublishMethod=Package /p:OutDir="$(build.artifactStagingDirectory)" /p:WebPublishMethod=Package'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
-
-- task: VSTest@2
-  inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
     
 - task: PublishBuildArtifacts@1
   inputs:
     pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
+    
+- task: VSTest@2
+  inputs:
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'

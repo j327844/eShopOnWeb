@@ -13,7 +13,7 @@ WORKDIR /app
 COPY *.sln .
 COPY . .
 WORKDIR /app/src/Web
-RUN dotnet restore
+RUN dotnet restore -p:RestoreUseSkipNonexistentTargets=false -nowarn:msb3202,nu1503
 
 RUN dotnet publish -c Release -o out
 

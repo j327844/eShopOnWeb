@@ -27,6 +27,11 @@ steps:
     msbuildArgs: '/t:Clean /p:DeployOnBuild=true /p:WebPublishMethod=Package /p:OutDir="$(build.artifactStagingDirectory)" /p:WebPublishMethod=Package'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+
+- task: CopyFiles@2
+  inputs:
+    pathtoPublish: '$(build.artifactStagingDirectory)'
+    targetFolder: '$(build.artifactStagingDirectory)'
     
 - task: PublishBuildArtifacts@1
     
